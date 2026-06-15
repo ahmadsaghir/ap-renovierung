@@ -238,7 +238,7 @@ export default function HomePage() {
 
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section
-        className="relative pt-20 pb-40 px-6"
+        className="relative pt-20 pb-[300px] sm:pb-40 px-6"
         style={{
           backgroundImage: `url('/background.png')`,
           backgroundSize: "cover",
@@ -365,7 +365,7 @@ export default function HomePage() {
       </section>
 
       {/* Spacer for overlapping cards */}
-      <div className="h-24 md:h-28 bg-[#F7FAFC]" />
+      <div className="h-28 sm:h-24 md:h-28 bg-[#F7FAFC]" />
 
       {/* ── Stats Bar ────────────────────────────────────────── 
       <section className="py-10 px-6 bg-[#F7FAFC] border-b border-gray-100">
