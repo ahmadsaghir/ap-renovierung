@@ -42,12 +42,25 @@ function getAllowedHours(): string[] {
 
 interface ContactData {
   name: string;
+  strasse: string;
+  hausnummer: string;
+  ort: string;
+  postleitzahl: string;
   services: string[];
   date: string;
   time: string;
 }
 
-const EMPTY_DATA: ContactData = { name: "", services: [], date: "", time: "" };
+const EMPTY_DATA: ContactData = {
+  name: "",
+  strasse: "",
+  hausnummer: "",
+  ort: "",
+  postleitzahl: "",
+  services: [],
+  date: "",
+  time: "",
+};
 
 function CalendarPicker({ value, onChange }: { value: string; onChange: (v: string) => void }) {
   const today = startOfDay(new Date());
@@ -134,7 +147,13 @@ export default function ContactModal({ open, onClose, initialService }: ContactM
   }, [hour, minute]);
 
   const canProceed = () => {
-    if (step === 1) return data.name.trim().length > 0;
+    if (step === 1) return (
+      data.name.trim().length > 0 &&
+      data.strasse.trim().length > 0 &&
+      data.hausnummer.trim().length > 0 &&
+      data.ort.trim().length > 0 &&
+      data.postleitzahl.trim().length > 0
+    );
     if (step === 2) return data.services.length > 0;
     if (step === 3) return data.date !== "" && data.time !== "";
     return true;
@@ -148,6 +167,7 @@ export default function ContactModal({ open, onClose, initialService }: ContactM
       `Hallo! Ich möchte eine Anfrage stellen.`,
       ``,
       `Name: ${data.name}`,
+      `Adresse: ${data.strasse} ${data.hausnummer}, ${data.postleitzahl} ${data.ort}`,
       `Leistungen:`,
       ...data.services.map((s, i) => `${i + 1}. ${s}`),
       `Wunschdatum: ${data.date ? format(new Date(data.date + "T00:00:00"), "dd.MM.yyyy", { locale: deLocale }) : "—"}`,
@@ -203,21 +223,61 @@ export default function ContactModal({ open, onClose, initialService }: ContactM
           {/* Body */}
           <div className="px-6 py-6 min-h-[280px] max-h-[58vh] overflow-y-auto">
 
-            {/* Step 1: Name */}
+            {/* Step 1: Name + Address */}
             {step === 1 && (
-              <div>
-                <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">
-                  Vollständiger Name
-                </label>
-                <input
-                  type="text"
-                  autoFocus
-                  placeholder="z.B. Max Mustermann"
-                  value={data.name}
-                  onChange={(e) => setData((d) => ({ ...d, name: e.target.value }))}
-                  onKeyDown={(e) => e.key === "Enter" && handleNext()}
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-[#0D5C3A] transition-colors placeholder:text-gray-400"
-                />
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">
+                    Vollständiger Name
+                  </label>
+                  <input
+                    type="text"
+                    autoFocus
+                    placeholder="z.B. Max Mustermann"
+                    value={data.name}
+                    onChange={(e) => setData((d) => ({ ...d, name: e.target.value }))}
+                    className="w-full border border-gray-200 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-[#0D5C3A] transition-colors placeholder:text-gray-400"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">
+                    Adresse
+                  </label>
+                  <div className="flex gap-3">
+                    <input
+                      type="text"
+                      placeholder="Straße"
+                      value={data.strasse}
+                      onChange={(e) => setData((d) => ({ ...d, strasse: e.target.value }))}
+                      className="flex-1 border border-gray-200 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-[#0D5C3A] transition-colors placeholder:text-gray-400"
+                    />
+                    <input
+                      type="text"
+                      placeholder="Nr."
+                      value={data.hausnummer}
+                      onChange={(e) => setData((d) => ({ ...d, hausnummer: e.target.value }))}
+                      className="w-20 border border-gray-200 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-[#0D5C3A] transition-colors placeholder:text-gray-400"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex gap-3">
+                  <input
+                    type="text"
+                    placeholder="PLZ"
+                    value={data.postleitzahl}
+                    onChange={(e) => setData((d) => ({ ...d, postleitzahl: e.target.value }))}
+                    className="w-28 border border-gray-200 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-[#0D5C3A] transition-colors placeholder:text-gray-400"
+                  />
+                  <input
+                    type="text"
+                    placeholder="Ort"
+                    value={data.ort}
+                    onChange={(e) => setData((d) => ({ ...d, ort: e.target.value }))}
+                    className="flex-1 border border-gray-200 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-[#0D5C3A] transition-colors placeholder:text-gray-400"
+                  />
+                </div>
               </div>
             )}
 
@@ -299,7 +359,14 @@ export default function ContactModal({ open, onClose, initialService }: ContactM
                     <span className="text-xs font-bold uppercase tracking-wide text-gray-400">Name</span>
                     <span className="text-sm font-bold text-[#2D3748]">{data.name}</span>
                   </div>
-                  <div className="px-5 py-3.5">
+                  <div className="flex justify-between items-start px-5 py-3.5">
+                    <span className="text-xs font-bold uppercase tracking-wide text-gray-400 pt-0.5">Adresse</span>
+                    <span className="text-sm font-bold text-[#2D3748] text-right leading-snug">
+                      {data.strasse} {data.hausnummer}<br />
+                      {data.postleitzahl} {data.ort}
+                    </span>
+                  </div>
+                  <div className="px-5 py-3.5 bg-gray-50">
                     <p className="text-xs font-bold uppercase tracking-wide text-gray-400 mb-2">Leistungen</p>
                     <ul className="space-y-1.5">
                       {data.services.map((s) => (
