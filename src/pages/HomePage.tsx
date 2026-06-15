@@ -7,6 +7,8 @@ import {
   PackageOpen,
   Truck,
   Sprout,
+  Wrench,
+  Droplets,
   Phone,
   Mail,
   ArrowUpRight,
@@ -62,6 +64,16 @@ const SERVICE_CARDS = [
     title: "Gartenarbeiten",
     desc: "Pflege & Gestaltung Ihres Gartens",
     icon: Sprout,
+  },
+  {
+    title: "Hochdruckreinigung",
+    desc: "Einfahrten, Terrassen & Fassaden",
+    icon: Droplets,
+  },
+  {
+    title: "Hausmeisterservice",
+    desc: "Reparaturen, Wartung & Pflege",
+    icon: Wrench,
   },
 ];
 
@@ -238,7 +250,7 @@ export default function HomePage() {
 
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section
-        className="relative pt-20 pb-[300px] sm:pb-40 px-6"
+        className="relative pt-20 pb-[460px] sm:pb-[220px] lg:pb-40 px-6"
         style={{
           backgroundImage: `url('/background.png')`,
           backgroundSize: "cover",
@@ -256,7 +268,7 @@ export default function HomePage() {
         />
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          {/* Badge */}
+          {/* Badge — re-enable once real customer reviews are available
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -280,6 +292,7 @@ export default function HomePage() {
               Zufriedene Kunden
             </span>
           </motion.div>
+          */}
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -335,7 +348,7 @@ export default function HomePage() {
           variants={stagger}
           className="absolute -bottom-20 left-0 right-0 px-4 md:px-8"
         >
-          <div className="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+          <div className="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
             {SERVICE_CARDS.map((card) => {
               const Icon = card.icon;
               return (
