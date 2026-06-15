@@ -41,39 +41,51 @@ const stagger: Variants = {
 const SERVICE_CARDS = [
   {
     title: "Trockenbau",
-    desc: "Professioneller Innenausbau & Wände",
+    desc: "Innenausbau & Wandverkleidungen nach Maß.",
     icon: Hammer,
+    img: "/services/trockenbau.png",
   },
   {
     title: "Malerarbeiten",
-    desc: "Sauber & präzise innen wie außen",
+    desc: "Streichen, tapezieren & spachteln.",
     icon: PaintRoller,
+    img: "/services/malerarbeiten.png",
   },
   {
     title: "Bodenverlegung",
-    desc: "Laminat, Parkett, Fliesen & mehr",
+    desc: "Laminat, Parkett, Fliesen & mehr.",
     icon: LayoutGrid,
+    img: "/services/bodenverlegung.png",
   },
   {
     title: "Entrümpelungen",
-    desc: "Zuverlässige Räumungen aller Art",
+    desc: "Räumungen von Wohnungen & Kellern.",
     icon: PackageOpen,
+    img: "/services/entruempelungen.png",
   },
-  { title: "Umzüge", desc: "Stressfrei von A nach B", icon: Truck },
+  {
+    title: "Umzüge",
+    desc: "Stressfrei von A nach B.",
+    icon: Truck,
+    img: "/services/umzuege.png",
+  },
   {
     title: "Gartenarbeiten",
-    desc: "Pflege & Gestaltung Ihres Gartens",
+    desc: "Pflege & Gestaltung Ihres Gartens.",
     icon: Sprout,
+    img: "/services/gartenarbeiten.png",
   },
   {
     title: "Hochdruckreinigung",
-    desc: "Einfahrten, Terrassen & Fassaden",
+    desc: "Einfahrten, Terrassen & Fassaden.",
     icon: Droplets,
+    img: "/services/hochdruckreinigung.png",
   },
   {
     title: "Hausmeisterservice",
-    desc: "Reparaturen, Wartung & Pflege",
+    desc: "Reparaturen, Wartung & Pflege.",
     icon: Wrench,
+    img: "/services/hausmeisterservice.png",
   },
 ];
 
@@ -248,9 +260,9 @@ export default function HomePage() {
         )}
       </nav>
 
-      {/* ── Hero ─────────────────────────────────────────────── */}
+      {/* Hero */}
       <section
-        className="relative pt-20 pb-[460px] sm:pb-[220px] lg:pb-40 px-6"
+        className="relative pt-20 pb-[560px] sm:pb-[320px] lg:pb-56 px-6"
         style={{
           backgroundImage: `url('/background.png')`,
           backgroundSize: "cover",
@@ -348,7 +360,7 @@ export default function HomePage() {
           variants={stagger}
           className="absolute -bottom-20 left-0 right-0 px-4 md:px-8"
         >
-          <div className="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+          <div className="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-3">
             {SERVICE_CARDS.map((card) => {
               const Icon = card.icon;
               return (
@@ -413,6 +425,7 @@ export default function HomePage() {
             variants={stagger}
             className="relative"
           >
+            {/*
             <motion.div
               variants={fadeUp}
               className="text-6xl md:text-7xl font-extrabold mb-4"
@@ -426,7 +439,7 @@ export default function HomePage() {
             >
               Zufriedene Kunden in ganz Deutschland
             </motion.p>
-
+*/}
             {/* Partner image card */}
             <motion.div
               variants={fadeUp}
@@ -529,12 +542,9 @@ export default function HomePage() {
                     <Star key={i} size={13} fill={LIME} stroke="none" />
                   ))}
                 </div>
-                <button
-                  onClick={() => openContact()}
-                  className="flex items-center gap-2 font-bold text-sm text-white/80 hover:text-white transition-colors"
-                >
-                  Bewertungen ansehen <ArrowUpRight size={13} />
-                </button>
+                <p className="text-white/60 text-sm">
+                  Geprüfte Qualität bei jedem Auftrag.
+                </p>
               </motion.div>
             </div>
           </motion.div>
@@ -573,48 +583,7 @@ export default function HomePage() {
             variants={stagger}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
           >
-            {[
-              {
-                title: "Trockenbau",
-                desc: "Professioneller Trockenbau, Wandverkleidungen und Innenausbau nach Maß.",
-                img: "/services/trockenbau.png",
-              },
-              {
-                title: "Malerarbeiten",
-                desc: "Saubere Innen- und Außenmalerarbeiten — streichen, tapezieren, spachteln.",
-                img: "/services/malerarbeiten.png",
-              },
-              {
-                title: "Bodenverlegung",
-                desc: "Verlegung von Laminat, Parkett, Fliesen und weiteren Bodenbelägen.",
-                img: "/services/bodenverlegung.png",
-              },
-              {
-                title: "Entrümpelungen",
-                desc: "Zuverlässige Entrümpelungen von Wohnungen, Kellern und Dachböden.",
-                img: "/services/entruempelungen.png",
-              },
-              {
-                title: "Umzüge",
-                desc: "Stressfreie Umzüge — von der Verpackung bis zur Aufstellung am neuen Ort.",
-                img: "/services/umzuege.png",
-              },
-              {
-                title: "Gartenarbeiten",
-                desc: "Rasenmähen, Heckenschneiden, Bepflanzung und Gartenpflege.",
-                img: "/services/gartenarbeiten.png",
-              },
-              {
-                title: "Hochdruckreinigung",
-                desc: "Professionelle Reinigung von Einfahrten, Terrassen und Fassaden.",
-                img: "/services/hochdruckreinigung.png",
-              },
-              {
-                title: "Hausmeisterservice",
-                desc: "Reparaturen, Wartung, Treppenhausreinigung und Kleinreparaturen.",
-                img: "/services/hausmeisterservice.png",
-              },
-            ].map((s) => (
+            {SERVICE_CARDS.map((s) => (
               <motion.div
                 key={s.title}
                 variants={fadeUp}
@@ -645,7 +614,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Contact / Lead Gen Section ───────────────────────── */}
-      <section className="py-0 bg-white">
+      <section id="contact" className="py-0 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {/* Left: Visual */}
@@ -721,7 +690,7 @@ export default function HomePage() {
                   Wir melden uns innerhalb von 24 Stunden bei Ihnen.
                 </p>
 
-                <LeadForm onSubmit={openContact} />
+                <LeadForm />
               </div>
             </div>
           </div>
@@ -837,7 +806,6 @@ export default function HomePage() {
 
       {/* ── Footer ───────────────────────────────────────────── */}
       <footer
-        id="contact"
         style={{ background: FOOTER_BG }}
         className="text-white pt-16 pb-8 px-6"
       >
@@ -865,15 +833,7 @@ export default function HomePage() {
                 Leistungen
               </h4>
               <ul className="space-y-2 text-sm text-white/60">
-                {[
-                  "Trockenbau",
-                  "Malerarbeiten",
-                  "Bodenverlegung",
-                  "Entrümpelungen",
-                  "Umzüge",
-                  "Gartenarbeiten",
-                  "Hochdruckreinigung",
-                ].map((l) => (
+                {SERVICE_CARDS.map(({ title: l }) => (
                   <li key={l}>
                     <button
                       onClick={() => scrollTo("services")}
@@ -942,11 +902,7 @@ export default function HomePage() {
 }
 
 /* ── Inline Lead Form ─────────────────────────────────── */
-function LeadForm({
-  onSubmit,
-}: {
-  onSubmit: (service: string | null) => void;
-}) {
+function LeadForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -1008,15 +964,7 @@ function LeadForm({
         className={`${inputClass} bg-white`}
       >
         <option value="">Leistung auswählen</option>
-        {[
-          "Trockenbau",
-          "Malerarbeiten",
-          "Bodenverlegung",
-          "Entrümpelungen",
-          "Umzüge",
-          "Gartenarbeiten",
-          "Hochdruckreinigung",
-        ].map((s) => (
+        {SERVICE_CARDS.map(({ title: s }) => (
           <option key={s} value={s}>
             {s}
           </option>

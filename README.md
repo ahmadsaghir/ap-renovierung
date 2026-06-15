@@ -1,6 +1,6 @@
-# The King Kam
+# AP Renovierung
 
-A React web application for The King Kam.
+A React web application for AP Renovierung.
 
 ## Prerequisites
 
