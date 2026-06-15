@@ -615,49 +615,26 @@ export default function HomePage() {
               <motion.div
                 key={s.title}
                 variants={fadeUp}
-                className="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer h-64"
+                className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer h-64"
                 onClick={() => openContact(s.title)}
               >
                 <img
                   src={s.img}
                   alt={s.title}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-108"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/5" />
                 <div className="absolute inset-0 p-5 flex flex-col justify-end">
-                  <span
-                    className="text-xs font-bold uppercase tracking-widest mb-1"
-                    style={{ color: LIME }}
-                  >
-                    {s.cat}
-                  </span>
-                  <h3 className="text-lg font-extrabold text-white mb-1 leading-tight">
+                  <h3 className="text-[1.05rem] font-extrabold text-white leading-snug drop-shadow-sm">
                     {s.title}
                   </h3>
-                  <p className="text-white/70 text-xs leading-relaxed mb-3 line-clamp-2">
+                  <p className="text-white/75 text-xs leading-relaxed mt-1.5 line-clamp-2 drop-shadow-sm">
                     {s.desc}
                   </p>
-                  <div className="flex items-center gap-1 font-bold text-sm text-white/90 group-hover:text-white transition-colors">
-                    Anfragen{" "}
-                    <ChevronRight
-                      size={14}
-                      className="group-hover:translate-x-1 transition-transform"
-                    />
-                  </div>
                 </div>
               </motion.div>
             ))}
           </motion.div>
-
-          <div className="text-center mt-10">
-            <button
-              onClick={() => scrollTo("services")}
-              className="inline-flex items-center gap-2 px-8 py-3 rounded-xl font-bold text-white transition-all hover:opacity-90"
-              style={{ background: PRIMARY }}
-            >
-              Alle Leistungen ansehen <ArrowUpRight size={16} />
-            </button>
-          </div>
         </div>
       </section>
 

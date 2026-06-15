@@ -1,38 +1,3 @@
 uploads = []
 generated = []
-
-[[outputs]]
-id = "F7mmLSJf3nctALv-EeZlz"
-uri = "file://attached_assets/stock_images/bodenverlegung.jpg"
-type = "image"
-title = "worker laying laminate wood flooring installation"
-
-[[outputs]]
-id = "4jDDeZ_UgkV48FPYkjJeS"
-uri = "file://attached_assets/stock_images/entruempelungen.jpg"
-type = "image"
-title = "house clearance junk removal cluttered room cleaning"
-
-[[outputs]]
-id = "nRvzdajb-Q9mM5RIkz7qv"
-uri = "file://attached_assets/stock_images/umzuege.jpg"
-type = "image"
-title = "professional movers carrying furniture boxes moving truck"
-
-[[outputs]]
-id = "UANeVhnjPo8OyWKpHzowa"
-uri = "file://attached_assets/stock_images/gartenarbeiten.jpg"
-type = "image"
-title = "gardener mowing lawn garden maintenance green grass"
-
-[[outputs]]
-id = "liUmTGNZi3fobHkZdgSfw"
-uri = "file://attached_assets/stock_images/hochdruckreinigung.jpg"
-type = "image"
-title = "pressure washer cleaning driveway patio high pressure water"
-
-[[outputs]]
-id = "qoQTyKEzIdD7sbZGMCYwV"
-uri = "file://attached_assets/stock_images/hausmeisterservice.jpg"
-type = "image"
-title = "building caretaker handyman facility maintenance repair service"
+outputs = []
