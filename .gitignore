@@ -1,0 +1,37 @@
+# --- Replit Specifics ---
+.replit
+replit.nix
+.config/
+.upm/
+*.backup
+
+# --- Dependency Folders ---
+node_modules/
+jspm_packages/
+web_modules/
+venv/
+.venv/
+env/
+lib/
+lib64/
+
+# --- Environment Secrets (CRITICAL) ---
+.env
+.env.local
+.env.*.local
+secrets.json
+
+# --- Build and Output Directories ---
+dist/
+build/
+.next/
+.out/
+out/
+
+# --- Logs and System Files ---
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+.DS_Store
+Thumbs.db
