@@ -560,91 +560,93 @@ export default function HomePage() {
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
             variants={stagger}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
           >
             {[
               {
-                icon: Hammer,
                 title: "Trockenbau",
                 desc: "Professioneller Trockenbau, Wandverkleidungen und Innenausbau nach Maß.",
                 cat: "Renovierung",
+                img: "/services/trockenbau.jpg",
               },
               {
-                icon: PaintRoller,
                 title: "Malerarbeiten",
                 desc: "Saubere Innen- und Außenmalerarbeiten — streichen, tapezieren, spachteln.",
                 cat: "Renovierung",
+                img: "/services/malerarbeiten.jpg",
               },
               {
-                icon: LayoutGrid,
                 title: "Bodenverlegung",
                 desc: "Verlegung von Laminat, Parkett, Fliesen und weiteren Bodenbelägen.",
                 cat: "Renovierung",
+                img: "/services/bodenverlegung.jpg",
               },
               {
-                icon: PackageOpen,
                 title: "Entrümpelungen",
                 desc: "Zuverlässige Entrümpelungen von Wohnungen, Kellern und Dachböden.",
                 cat: "Umzüge",
+                img: "/services/entruempelungen.jpg",
               },
               {
-                icon: Truck,
                 title: "Umzüge",
                 desc: "Stressfreie Umzüge — von der Verpackung bis zur Aufstellung am neuen Ort.",
                 cat: "Umzüge",
+                img: "/services/umzuege.jpg",
               },
               {
-                icon: Sprout,
                 title: "Gartenarbeiten",
                 desc: "Rasenmähen, Heckenschneiden, Bepflanzung und Gartenpflege.",
                 cat: "Außenpflege",
+                img: "/services/gartenarbeiten.jpg",
               },
               {
-                icon: Zap,
                 title: "Hochdruckreinigung",
                 desc: "Professionelle Reinigung von Einfahrten, Terrassen und Fassaden.",
                 cat: "Außenpflege",
+                img: "/services/hochdruckreinigung.jpg",
               },
-            ].map((s) => {
-              const Icon = s.icon;
-              return (
-                <motion.div
-                  key={s.title}
-                  variants={fadeUp}
-                  className="group bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-1 transition-all duration-300 cursor-pointer"
-                  onClick={() => openContact(s.title)}
-                >
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-colors group-hover:scale-110 duration-300"
-                    style={{ background: "#E8F5EE" }}
-                  >
-                    <Icon size={22} style={{ color: PRIMARY }} />
-                  </div>
+              {
+                title: "Hausmeisterservice",
+                desc: "Reparaturen, Wartung, Treppenhausreinigung und Kleinreparaturen.",
+                cat: "Facility",
+                img: "/services/hausmeisterservice.jpg",
+              },
+            ].map((s) => (
+              <motion.div
+                key={s.title}
+                variants={fadeUp}
+                className="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer h-64"
+                onClick={() => openContact(s.title)}
+              >
+                <img
+                  src={s.img}
+                  alt={s.title}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                <div className="absolute inset-0 p-5 flex flex-col justify-end">
                   <span
-                    className="text-xs font-bold uppercase tracking-widest mb-2 block"
-                    style={{ color: PRIMARY_LIGHT }}
+                    className="text-xs font-bold uppercase tracking-widest mb-1"
+                    style={{ color: LIME }}
                   >
                     {s.cat}
                   </span>
-                  <h3 className="text-lg font-extrabold text-[#2D3748] mb-2">
+                  <h3 className="text-lg font-extrabold text-white mb-1 leading-tight">
                     {s.title}
                   </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-4">
+                  <p className="text-white/70 text-xs leading-relaxed mb-3 line-clamp-2">
                     {s.desc}
                   </p>
-                  <div
-                    className="flex items-center gap-1 font-bold text-sm transition-colors"
-                    style={{ color: PRIMARY }}
-                  >
+                  <div className="flex items-center gap-1 font-bold text-sm text-white/90 group-hover:text-white transition-colors">
                     Anfragen{" "}
                     <ChevronRight
                       size={14}
                       className="group-hover:translate-x-1 transition-transform"
                     />
                   </div>
-                </motion.div>
-              );
-            })}
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
 
           <div className="text-center mt-10">

@@ -6,10 +6,11 @@ import {
   Truck,
   Sprout,
   Zap,
+  Wrench,
   type LucideIcon,
 } from "lucide-react";
 
-export type ServiceCategory = "renovation" | "moving" | "outdoor";
+export type ServiceCategory = "renovation" | "moving" | "outdoor" | "facility";
 
 export interface ServiceConfig {
   imagePath: string;
@@ -24,9 +25,10 @@ export const CATEGORY_LABELS: Record<ServiceCategory, { de: string; en: string }
   renovation: { de: "Renovierung & Innenausbau", en: "Renovierung & Innenausbau" },
   moving: { de: "Umzüge & Entrümpelungen", en: "Umzüge & Entrümpelungen" },
   outdoor: { de: "Außenpflege", en: "Außenpflege" },
+  facility: { de: "Hausmeisterservice", en: "Hausmeisterservice" },
 };
 
-export const CATEGORY_ORDER: ServiceCategory[] = ["renovation", "moving", "outdoor"];
+export const CATEGORY_ORDER: ServiceCategory[] = ["renovation", "moving", "outdoor", "facility"];
 
 export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
   "Trockenbau": {
@@ -90,13 +92,23 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     label: { de: "Auf Anfrage", en: "Auf Anfrage" },
   },
   "Hochdruckreinigung": {
-    imagePath: "/services/hochdruckreinigung.webp",
+    imagePath: "/services/hochdruckreinigung.jpg",
     description: {
       de: "Professionelle Hochdruckreinigung von Einfahrten, Terrassen, Fassaden und mehr",
       en: "Professionelle Hochdruckreinigung von Einfahrten, Terrassen, Fassaden und mehr",
     },
     icon: Zap,
     category: "outdoor",
+    label: { de: "Auf Anfrage", en: "Auf Anfrage" },
+  },
+  "Hausmeisterservice": {
+    imagePath: "/services/hausmeisterservice.jpg",
+    description: {
+      de: "Zuverlässiger Hausmeisterservice — Reparaturen, Wartung, Treppenhausreinigung und Kleinreparaturen",
+      en: "Zuverlässiger Hausmeisterservice — Reparaturen, Wartung, Treppenhausreinigung und Kleinreparaturen",
+    },
+    icon: Wrench,
+    category: "facility",
     label: { de: "Auf Anfrage", en: "Auf Anfrage" },
   },
 };
