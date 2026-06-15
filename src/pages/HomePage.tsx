@@ -7,14 +7,12 @@ import {
   PackageOpen,
   Truck,
   Sprout,
-  Zap,
   Phone,
   Mail,
   ArrowUpRight,
   Menu,
   X,
   CheckCircle,
-  ChevronRight,
   Star,
 } from "lucide-react";
 import { Link } from "wouter";
@@ -132,7 +130,7 @@ export default function HomePage() {
 
           <div className="hidden md:flex items-center gap-8 text-sm font-semibold text-gray-700">
             {[
-              { label: "Startseite", id: "" },
+              { label: "Startseite", id: "", href: "/" },
               { label: "Leistungen", id: "services" },
               { label: "Über uns", id: "about" },
               { label: "Kontakt", id: "contact" },
@@ -438,8 +436,8 @@ export default function HomePage() {
           >
             <motion.div
               variants={fadeUp}
-              className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border text-sm font-semibold"
-              style={{ borderColor: PRIMARY_LIGHT, color: PRIMARY_LIGHT }}
+              className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border text-sm font-semibold bg-[#C3EC54]"
+              style={{ borderColor: "#0D5C3A", color: "#0D5C3A" }}
             >
               Über uns
             </motion.div>
@@ -542,8 +540,8 @@ export default function HomePage() {
           >
             <motion.div
               variants={fadeUp}
-              className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border text-sm font-semibold"
-              style={{ borderColor: PRIMARY_LIGHT, color: PRIMARY_LIGHT }}
+              className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border text-sm font-semibold bg-[#C3EC54]"
+              style={{ borderColor: "#0D5C3A", color: "#0D5C3A" }}
             >
               Unsere Leistungen
             </motion.div>
@@ -566,69 +564,64 @@ export default function HomePage() {
               {
                 title: "Trockenbau",
                 desc: "Professioneller Trockenbau, Wandverkleidungen und Innenausbau nach Maß.",
-                cat: "Renovierung",
                 img: "/services/trockenbau.png",
               },
               {
                 title: "Malerarbeiten",
                 desc: "Saubere Innen- und Außenmalerarbeiten — streichen, tapezieren, spachteln.",
-                cat: "Renovierung",
                 img: "/services/malerarbeiten.png",
               },
               {
                 title: "Bodenverlegung",
                 desc: "Verlegung von Laminat, Parkett, Fliesen und weiteren Bodenbelägen.",
-                cat: "Renovierung",
                 img: "/services/bodenverlegung.png",
               },
               {
                 title: "Entrümpelungen",
                 desc: "Zuverlässige Entrümpelungen von Wohnungen, Kellern und Dachböden.",
-                cat: "Umzüge",
                 img: "/services/entruempelungen.png",
               },
               {
                 title: "Umzüge",
                 desc: "Stressfreie Umzüge — von der Verpackung bis zur Aufstellung am neuen Ort.",
-                cat: "Umzüge",
                 img: "/services/umzuege.png",
               },
               {
                 title: "Gartenarbeiten",
                 desc: "Rasenmähen, Heckenschneiden, Bepflanzung und Gartenpflege.",
-                cat: "Außenpflege",
                 img: "/services/gartenarbeiten.png",
               },
               {
                 title: "Hochdruckreinigung",
                 desc: "Professionelle Reinigung von Einfahrten, Terrassen und Fassaden.",
-                cat: "Außenpflege",
                 img: "/services/hochdruckreinigung.png",
               },
               {
                 title: "Hausmeisterservice",
                 desc: "Reparaturen, Wartung, Treppenhausreinigung und Kleinreparaturen.",
-                cat: "Facility",
                 img: "/services/hausmeisterservice.png",
               },
             ].map((s) => (
               <motion.div
                 key={s.title}
                 variants={fadeUp}
-                className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer h-64"
+                className="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer h-64"
                 onClick={() => openContact(s.title)}
               >
                 <img
                   src={s.img}
                   alt={s.title}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-108"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/5" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                 <div className="absolute inset-0 p-5 flex flex-col justify-end">
-                  <h3 className="text-[1.05rem] font-extrabold text-white leading-snug drop-shadow-sm">
+                  <h3
+                    className="text-lg font-extrabold text-white mb-1 leading-tight"
+                    style={{ color: LIME }}
+                  >
                     {s.title}
                   </h3>
-                  <p className="text-white/75 text-xs leading-relaxed mt-1.5 line-clamp-2 drop-shadow-sm">
+                  <p className="text-white/70 text-xs leading-relaxed mb-3 line-clamp-2">
                     {s.desc}
                   </p>
                 </div>
@@ -703,8 +696,8 @@ export default function HomePage() {
             <div className="p-8 md:p-14 bg-white flex items-center">
               <div className="w-full max-w-md mx-auto">
                 <div
-                  className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border text-sm font-semibold"
-                  style={{ borderColor: PRIMARY_LIGHT, color: PRIMARY_LIGHT }}
+                  className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border text-sm font-semibold bg-[#C3EC54]"
+                  style={{ borderColor: "#0D5C3A", color: "#0D5C3A" }}
                 >
                   Kontakt
                 </div>
@@ -734,8 +727,8 @@ export default function HomePage() {
           >
             <motion.div
               variants={fadeUp}
-              className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border text-sm font-semibold"
-              style={{ borderColor: PRIMARY_LIGHT, color: PRIMARY_LIGHT }}
+              className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border text-sm font-semibold bg-[#C3EC54]"
+              style={{ borderColor: "#0D5C3A", color: "#0D5C3A" }}
             >
               Unsere Vorteile
             </motion.div>
@@ -780,7 +773,7 @@ export default function HomePage() {
                 >
                   <div
                     className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-5"
-                    style={{ background: "#E8F5EE" }}
+                    style={{ background: "#C3EC54" }}
                   >
                     <Icon size={24} style={{ color: PRIMARY }} />
                   </div>
