@@ -6,25 +6,10 @@ const LIME = "#C3EC54";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex flex-col" style={{ background: "#F7FAFC" }}>
-      {/* Top bar matching site header */}
-      <div className="w-full px-6 py-5 flex items-center justify-between max-w-6xl mx-auto">
-        <Link href="/">
-          <span className="flex items-center gap-2 cursor-pointer">
-            <img src="/ap-logo.png" alt="AP Renovierung" className="h-10 w-auto" onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
-          </span>
-        </Link>
-        <Link href="/">
-          <span
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white transition-all hover:opacity-90 cursor-pointer"
-            style={{ background: PRIMARY }}
-          >
-            <Home size={15} />
-            Zurück zur Startseite
-          </span>
-        </Link>
-      </div>
-
+    <div
+      className="min-h-screen flex flex-col"
+      style={{ background: "#F7FAFC" }}
+    >
       {/* Main content */}
       <div className="flex-1 flex items-center justify-center px-6">
         <div className="text-center max-w-lg">
@@ -53,7 +38,11 @@ export default function NotFound() {
           {/* Badge */}
           <div
             className="inline-flex items-center gap-2 mb-5 px-4 py-1.5 rounded-full border text-xs font-bold uppercase tracking-widest"
-            style={{ borderColor: "#B7DCC8", color: PRIMARY, background: "#E8F5EE" }}
+            style={{
+              borderColor: "#B7DCC8",
+              color: PRIMARY,
+              background: "#E8F5EE",
+            }}
           >
             Seite nicht gefunden
           </div>
@@ -62,9 +51,9 @@ export default function NotFound() {
             Diese Seite existiert nicht.
           </h1>
           <p className="text-gray-500 text-base leading-relaxed mb-10">
-            Die gesuchte Seite wurde möglicherweise verschoben, gelöscht oder hat
-            nie existiert. Kehren Sie zur Startseite zurück und finden Sie, was Sie
-            suchen.
+            Die gesuchte Seite wurde möglicherweise verschoben, gelöscht oder
+            hat nie existiert. Kehren Sie zur Startseite zurück und finden Sie,
+            was Sie suchen.
           </p>
 
           <Link href="/">
