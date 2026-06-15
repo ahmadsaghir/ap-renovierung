@@ -32,7 +32,7 @@ export const CATEGORY_ORDER: ServiceCategory[] = ["renovation", "moving", "outdo
 
 export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
   "Trockenbau": {
-    imagePath: "/services/trockenbau.webp",
+    imagePath: "/services-images/trockenbau.webp",
     description: {
       de: "Professioneller Trockenbau, Wandverkleidungen und Innenausbau nach Maß",
       en: "Professioneller Trockenbau, Wandverkleidungen und Innenausbau nach Maß",
@@ -42,7 +42,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     label: { de: "Auf Anfrage", en: "Auf Anfrage" },
   },
   "Malerarbeiten": {
-    imagePath: "/services/malerarbeiten.webp",
+    imagePath: "/services-images/malerarbeiten.webp",
     description: {
       de: "Saubere Innen- und Außenmalerarbeiten — streichen, tapezieren, spachteln",
       en: "Saubere Innen- und Außenmalerarbeiten — streichen, tapezieren, spachteln",
@@ -52,7 +52,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     label: { de: "Auf Anfrage", en: "Auf Anfrage" },
   },
   "Bodenverlegung": {
-    imagePath: "/services/bodenverlegung.webp",
+    imagePath: "/services-images/bodenverlegung.webp",
     description: {
       de: "Verlegung von Laminat, Parkett, Fliesen und weiteren Bodenbelägen",
       en: "Verlegung von Laminat, Parkett, Fliesen und weiteren Bodenbelägen",
@@ -62,7 +62,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     label: { de: "Auf Anfrage", en: "Auf Anfrage" },
   },
   "Entrümpelungen": {
-    imagePath: "/services/entruempelungen.webp",
+    imagePath: "/services-images/entruempelungen.webp",
     description: {
       de: "Zuverlässige Entrümpelungen von Wohnungen, Kellern, Dachböden und Büros",
       en: "Zuverlässige Entrümpelungen von Wohnungen, Kellern, Dachböden und Büros",
@@ -72,7 +72,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     label: { de: "Auf Anfrage", en: "Auf Anfrage" },
   },
   "Umzüge": {
-    imagePath: "/services/umzuege.webp",
+    imagePath: "/services-images/umzuege.webp",
     description: {
       de: "Stressfreie Umzüge — von der Verpackung bis zur Aufstellung am neuen Ort",
       en: "Stressfreie Umzüge — von der Verpackung bis zur Aufstellung am neuen Ort",
@@ -82,7 +82,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     label: { de: "Auf Anfrage", en: "Auf Anfrage" },
   },
   "Gartenarbeiten": {
-    imagePath: "/services/gartenarbeiten.webp",
+    imagePath: "/services-images/gartenarbeiten.webp",
     description: {
       de: "Rasenmähen, Heckenschneiden, Bepflanzung und saisonale Gartenpflege",
       en: "Rasenmähen, Heckenschneiden, Bepflanzung und saisonale Gartenpflege",
@@ -92,7 +92,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     label: { de: "Auf Anfrage", en: "Auf Anfrage" },
   },
   "Hochdruckreinigung": {
-    imagePath: "/services/hochdruckreinigung.jpg",
+    imagePath: "/services-images/hochdruckreinigung.jpg",
     description: {
       de: "Professionelle Hochdruckreinigung von Einfahrten, Terrassen, Fassaden und mehr",
       en: "Professionelle Hochdruckreinigung von Einfahrten, Terrassen, Fassaden und mehr",
@@ -102,7 +102,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     label: { de: "Auf Anfrage", en: "Auf Anfrage" },
   },
   "Hausmeisterservice": {
-    imagePath: "/services/hausmeisterservice.jpg",
+    imagePath: "/services-images/hausmeisterservice.jpg",
     description: {
       de: "Zuverlässiger Hausmeisterservice — Reparaturen, Wartung, Treppenhausreinigung und Kleinreparaturen",
       en: "Zuverlässiger Hausmeisterservice — Reparaturen, Wartung, Treppenhausreinigung und Kleinreparaturen",

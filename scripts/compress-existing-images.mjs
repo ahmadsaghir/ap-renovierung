@@ -12,7 +12,7 @@ async function main() {
   const files = fs.readdirSync(SERVICES_DIR).filter((f) => f.endsWith(".jpg"));
 
   if (files.length === 0) {
-    console.log("No .jpg files found in public/services/");
+    console.log("No .jpg files found in public/services-images/");
     return;
   }
 
