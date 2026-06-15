@@ -8,11 +8,8 @@ import {
   startOfDay,
   addMonths,
   subMonths,
-  type Locale,
 } from "date-fns";
 import { de as deLocale } from "date-fns/locale";
-import { useLanguage } from "@/contexts/LanguageContext";
-import { translations, t } from "@/i18n/translations";
 
 const WHATSAPP_NUMBER = "4917621761041";
 const TOTAL_STEPS = 4;
@@ -20,6 +17,24 @@ const PRIMARY = "#0D5C3A";
 const LIME = "#C3EC54";
 const MINUTES = ["00", "15", "30", "45"];
 const DOW_LABELS = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
+
+const STEP_TITLES = [
+  "Ihr Name",
+  "Leistungen auswählen",
+  "Datum & Uhrzeit",
+  "Anfrage-Übersicht",
+];
+
+const SERVICE_LIST = [
+  "Trockenbau",
+  "Malerarbeiten",
+  "Bodenverlegung",
+  "Entrümpelungen",
+  "Umzüge",
+  "Gartenarbeiten",
+  "Hochdruckreinigung",
+  "Hausmeisterservice",
+];
 
 function getAllowedHours(): string[] {
   return Array.from({ length: 12 }, (_, i) => (7 + i).toString().padStart(2, "0"));
@@ -34,7 +49,7 @@ interface ContactData {
 
 const EMPTY_DATA: ContactData = { name: "", services: [], date: "", time: "" };
 
-function CalendarPicker({ value, onChange }: { value: string; onChange: (v: string) => void; dateLocale?: Locale }) {
+function CalendarPicker({ value, onChange }: { value: string; onChange: (v: string) => void }) {
   const today = startOfDay(new Date());
   const selectedDate = value ? startOfDay(new Date(value + "T00:00:00")) : null;
   const [viewDate, setViewDate] = useState<Date>(() => selectedDate ?? today);
@@ -100,9 +115,6 @@ interface ContactModalProps {
 }
 
 export default function ContactModal({ open, onClose, initialService }: ContactModalProps) {
-  const { lang } = useLanguage();
-  const bk = translations.booking;
-
   const [step, setStep] = useState(1);
   const [data, setData] = useState<ContactData>({ ...EMPTY_DATA });
   const [hour, setHour] = useState("09");
@@ -152,10 +164,7 @@ export default function ContactModal({ open, onClose, initialService }: ContactM
     }));
   };
 
-  const stepTitles = t(bk.stepTitles, lang);
-  const serviceList = t(bk.services, lang);
   const allowedHours = getAllowedHours();
-
   const selectClass = "w-full border border-gray-200 rounded-xl px-4 py-3 text-sm bg-white text-gray-700 focus:outline-none transition-colors";
 
   return (
@@ -177,13 +186,12 @@ export default function ContactModal({ open, onClose, initialService }: ContactM
                 <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: "#157A4C" }}>
                   Schritt {step} von {TOTAL_STEPS}
                 </p>
-                <h2 className="text-xl font-extrabold text-[#2D3748]">{stepTitles[step - 1]}</h2>
+                <h2 className="text-xl font-extrabold text-[#2D3748]">{STEP_TITLES[step - 1]}</h2>
               </div>
               <DialogPrimitive.Close onClick={onClose} className="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 transition-colors">
                 <X size={18} />
               </DialogPrimitive.Close>
             </div>
-            {/* Progress bar */}
             <div className="mt-4 h-1.5 bg-gray-100 rounded-full overflow-hidden">
               <div
                 className="h-full rounded-full transition-all duration-500"
@@ -199,12 +207,12 @@ export default function ContactModal({ open, onClose, initialService }: ContactM
             {step === 1 && (
               <div>
                 <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">
-                  {t(bk.fullName, lang)}
+                  Vollständiger Name
                 </label>
                 <input
                   type="text"
                   autoFocus
-                  placeholder={t(bk.placeholderName, lang)}
+                  placeholder="z.B. Max Mustermann"
                   value={data.name}
                   onChange={(e) => setData((d) => ({ ...d, name: e.target.value }))}
                   onKeyDown={(e) => e.key === "Enter" && handleNext()}
@@ -217,9 +225,9 @@ export default function ContactModal({ open, onClose, initialService }: ContactM
             {step === 2 && (
               <div className="space-y-2">
                 <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">
-                  {t(bk.selectServices, lang)}
+                  Einen oder mehrere Dienste auswählen
                 </p>
-                {serviceList.map((svc) => {
+                {SERVICE_LIST.map((svc) => {
                   const selected = data.services.includes(svc);
                   return (
                     <button
@@ -243,7 +251,7 @@ export default function ContactModal({ open, onClose, initialService }: ContactM
                 })}
                 {data.services.length > 0 && (
                   <p className="text-xs font-semibold mt-2 pt-2" style={{ color: PRIMARY }}>
-                    {data.services.length} {t(bk.servicesSelected, lang)}
+                    {data.services.length} Leistung(en) ausgewählt
                   </p>
                 )}
               </div>
@@ -254,23 +262,23 @@ export default function ContactModal({ open, onClose, initialService }: ContactM
               <div className="space-y-6">
                 <div>
                   <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">
-                    {t(bk.preferredDate, lang)}
+                    Wunschdatum
                   </p>
                   <CalendarPicker value={data.date} onChange={(v) => setData((d) => ({ ...d, date: v }))} />
                 </div>
                 <div>
                   <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">
-                    {t(bk.preferredTime, lang)}
+                    Wunschuhrzeit
                   </p>
                   <div className="flex gap-3">
                     <div className="flex-1">
-                      <p className="text-[10px] text-gray-400 uppercase tracking-widest mb-1">{t(bk.hour, lang)}</p>
+                      <p className="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Stunde</p>
                       <select value={hour} onChange={(e) => setHour(e.target.value)} className={selectClass} style={{ borderColor: "#E2E8F0" }}>
                         {allowedHours.map((h) => <option key={h} value={h}>{h}:00</option>)}
                       </select>
                     </div>
                     <div className="flex-1">
-                      <p className="text-[10px] text-gray-400 uppercase tracking-widest mb-1">{t(bk.minute, lang)}</p>
+                      <p className="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Minute</p>
                       <select value={minute} onChange={(e) => setMinute(e.target.value)} className={selectClass} style={{ borderColor: "#E2E8F0" }}>
                         {MINUTES.map((m) => <option key={m} value={m}>:{m}</option>)}
                       </select>
@@ -284,15 +292,15 @@ export default function ContactModal({ open, onClose, initialService }: ContactM
             {step === 4 && (
               <div>
                 <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">
-                  {t(bk.reviewDetails, lang)}
+                  Anfrage-Details überprüfen
                 </p>
                 <div className="rounded-xl border border-gray-100 overflow-hidden divide-y divide-gray-100">
                   <div className="flex justify-between items-center px-5 py-3.5 bg-gray-50">
-                    <span className="text-xs font-bold uppercase tracking-wide text-gray-400">{t(bk.summaryLabels.name, lang)}</span>
+                    <span className="text-xs font-bold uppercase tracking-wide text-gray-400">Name</span>
                     <span className="text-sm font-bold text-[#2D3748]">{data.name}</span>
                   </div>
                   <div className="px-5 py-3.5">
-                    <p className="text-xs font-bold uppercase tracking-wide text-gray-400 mb-2">{t(bk.summaryLabels.services, lang)}</p>
+                    <p className="text-xs font-bold uppercase tracking-wide text-gray-400 mb-2">Leistungen</p>
                     <ul className="space-y-1.5">
                       {data.services.map((s) => (
                         <li key={s} className="flex items-center gap-2 text-sm font-medium text-[#2D3748]">
@@ -305,13 +313,13 @@ export default function ContactModal({ open, onClose, initialService }: ContactM
                     </ul>
                   </div>
                   <div className="flex justify-between items-center px-5 py-3.5 bg-gray-50">
-                    <span className="text-xs font-bold uppercase tracking-wide text-gray-400">{t(bk.summaryLabels.date, lang)}</span>
+                    <span className="text-xs font-bold uppercase tracking-wide text-gray-400">Datum</span>
                     <span className="text-sm font-bold text-[#2D3748]">
                       {data.date ? format(new Date(data.date + "T00:00:00"), "dd.MM.yyyy", { locale: deLocale }) : "—"}
                     </span>
                   </div>
                   <div className="flex justify-between items-center px-5 py-3.5">
-                    <span className="text-xs font-bold uppercase tracking-wide text-gray-400">{t(bk.summaryLabels.time, lang)}</span>
+                    <span className="text-xs font-bold uppercase tracking-wide text-gray-400">Uhrzeit</span>
                     <span className="text-sm font-bold text-[#2D3748]">{data.time || "—"}</span>
                   </div>
                 </div>
