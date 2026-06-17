@@ -127,10 +127,10 @@ export default function HomePage() {
               <Phone size={13} /> 0176 / 2176 1041
             </a>
             <a
-              href="mailto:info@aprenovierung.de"
+              href="mailto:info@ap-renovierung.de"
               className="flex items-center gap-2 hover:text-[#C3EC54] transition-colors"
             >
-              <Mail size={13} /> info@aprenovierung.de
+              <Mail size={13} /> info@ap-renovierung.de
             </a>
           </div>
           <span className="font-semibold tracking-wide" style={{ color: LIME }}>
@@ -652,8 +652,8 @@ export default function HomePage() {
                     },
                     {
                       icon: Mail,
-                      text: "info@aprenovierung.de",
-                      href: "mailto:info@aprenovierung.de",
+                      text: "info@ap-renovierung.de",
+                      href: "mailto:info@ap-renovierung.de",
                     },
                   ].map(({ icon: Icon, text, href }) => (
                     <a
@@ -865,10 +865,10 @@ export default function HomePage() {
                 </li>
                 <li>
                   <a
-                    href="mailto:info@aprenovierung.de"
+                    href="mailto:info@ap-renovierung.de"
                     className="flex items-center gap-2 hover:text-white transition-colors break-all"
                   >
-                    <Mail size={13} /> info@aprenovierung.de
+                    <Mail size={13} /> info@ap-renovierung.de
                   </a>
                 </li>
               </ul>
