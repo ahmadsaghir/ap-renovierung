@@ -148,6 +148,8 @@ export default function HomePage() {
             <img
               src={"/nav_logo.webp"}
               alt="AP Renovierung"
+              width={391}
+              height={140}
               className="h-20 w-auto object-contain"
             />
           </Link>
@@ -371,7 +373,7 @@ export default function HomePage() {
                     key={card.title}
                     variants={fadeUp}
                     onClick={() => openContact(card.title)}
-                    className="group flex flex-col items-center gap-3 p-4 rounded-xl text-white text-center hover:scale-105 transition-all duration-300 shadow-xl"
+                    className="group flex flex-col items-center gap-3 p-4 rounded-xl text-white text-center hover:scale-105 transition-transform duration-300 will-change-transform shadow-xl"
                     style={{ background: PRIMARY_LIGHT }}
                   >
                     <div className="w-9 h-9 rounded-lg flex items-center justify-center bg-[#C3EC54] group-hover:bg-[#B5DF50] transition-colors">
@@ -798,6 +800,8 @@ export default function HomePage() {
               <img
                 src={"/white_logo.webp"}
                 alt="AP Renovierung"
+                width={1200}
+                height={400}
                 className="h-26 w-auto object-contain mb-4"
               />
               <p className="text-white/75 text-sm leading-relaxed max-w-xs mb-6">
