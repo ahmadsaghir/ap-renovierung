@@ -43,49 +43,49 @@ const SERVICE_CARDS = [
     title: "Trockenbau",
     desc: "Innenausbau & Wandverkleidungen nach Maß.",
     icon: Hammer,
-    img: "/services-images/trockenbau.png",
+    img: "/services-images/trockenbau.webp",
   },
   {
     title: "Malerarbeiten",
     desc: "Streichen, tapezieren & spachteln.",
     icon: PaintRoller,
-    img: "/services-images/malerarbeiten.png",
+    img: "/services-images/malerarbeiten.webp",
   },
   {
     title: "Bodenverlegung",
     desc: "Laminat, Parkett, Fliesen & mehr.",
     icon: LayoutGrid,
-    img: "/services-images/bodenverlegung.png",
+    img: "/services-images/bodenverlegung.webp",
   },
   {
     title: "Entrümpelungen",
     desc: "Räumungen von Wohnungen & Kellern.",
     icon: PackageOpen,
-    img: "/services-images/entruempelungen.png",
+    img: "/services-images/entruempelungen.webp",
   },
   {
     title: "Umzüge",
     desc: "Stressfrei von A nach B.",
     icon: Truck,
-    img: "/services-images/umzuege.png",
+    img: "/services-images/umzuege.webp",
   },
   {
     title: "Gartenarbeiten",
     desc: "Pflege & Gestaltung Ihres Gartens.",
     icon: Sprout,
-    img: "/services-images/gartenarbeiten.png",
+    img: "/services-images/gartenarbeiten.webp",
   },
   {
     title: "Hochdruckreinigung",
     desc: "Einfahrten, Terrassen & Fassaden.",
     icon: Droplets,
-    img: "/services-images/hochdruckreinigung.png",
+    img: "/services-images/hochdruckreinigung.webp",
   },
   {
     title: "Hausmeisterservice",
     desc: "Reparaturen, Wartung & Pflege.",
     icon: Wrench,
-    img: "/services-images/hausmeisterservice.png",
+    img: "/services-images/hausmeisterservice.webp",
   },
 ];
 
@@ -146,7 +146,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between h-20">
           <Link href="/">
             <img
-              src={"/nav_logo.png"}
+              src={"/nav_logo.webp"}
               alt="AP Renovierung"
               className="h-20 w-auto object-contain"
             />
@@ -267,7 +267,7 @@ export default function HomePage() {
         <section
           className="relative pt-20 pb-[560px] sm:pb-[320px] lg:pb-56 px-6"
           style={{
-            backgroundImage: `url('/background.png')`,
+            backgroundImage: `url('/background.webp')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -427,7 +427,7 @@ export default function HomePage() {
                 className="relative rounded-2xl overflow-hidden shadow-xl h-72"
               >
                 <img
-                  src="/Partner.png"
+                  src="/Partner.webp"
                   alt="AP Renovierung Partner"
                   className="w-full h-full object-cover"
                 />
@@ -602,7 +602,7 @@ export default function HomePage() {
               <div
                 className="relative hidden lg:flex flex-col items-start justify-end p-14 min-h-[600px]"
                 style={{
-                  backgroundImage: `url('/contact.png')`,
+                  backgroundImage: `url('/contact.webp')`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
@@ -796,7 +796,7 @@ export default function HomePage() {
             {/* Brand */}
             <div className="lg:col-span-2">
               <img
-                src={"/white_logo.png"}
+                src={"/white_logo.webp"}
                 alt="AP Renovierung"
                 className="h-26 w-auto object-contain mb-4"
               />
