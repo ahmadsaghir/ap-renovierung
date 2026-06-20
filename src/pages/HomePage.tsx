@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import { motion, type Variants } from "framer-motion";
 import {
   Hammer,
@@ -18,8 +18,8 @@ import {
   Star,
 } from "lucide-react";
 import { Link } from "wouter";
-import ContactModal from "@/components/BookingModal";
 
+const ContactModal = lazy(() => import("@/components/BookingModal"));
 const PRIMARY = "#0D5C3A";
 const PRIMARY_LIGHT = "#157A4C";
 const LIME = "#C3EC54";
@@ -141,7 +141,7 @@ export default function HomePage() {
 
       {/* ── Navbar ───────────────────────────────────────────── */}
       <nav
-        className={`sticky top-0 z-50 bg-white transition-all duration-300 ${scrolled ? "shadow-md" : "border-b border-gray-100"}`}
+        className={`sticky top-0 z-50 bg-white transition-shadow duration-300 ${scrolled ? "shadow-md" : "border-b border-gray-100"}`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between h-20">
           <Link href="/">
@@ -338,8 +338,7 @@ export default function HomePage() {
             >
               <button
                 onClick={() => openContact()}
-                className="flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-base transition-all hover:opacity-90 shadow-lg"
-                style={{ background: LIME, color: PRIMARY }}
+                className="flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-base transition-opacity hover:opacity-90 shadow-lg"                style={{ background: LIME, color: PRIMARY }}
               >
                 Kostenlos anfragen
                 <span
@@ -432,6 +431,8 @@ export default function HomePage() {
                   src="/Partner.webp"
                   alt="AP Renovierung Partner"
                   className="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
               </motion.div>
             </motion.div>
@@ -577,6 +578,8 @@ export default function HomePage() {
                     src={s.img}
                     alt={s.title}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                   <div className="absolute inset-0 p-5 flex flex-col justify-end">
@@ -771,8 +774,7 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
                 onClick={() => openContact()}
-                className="flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-base transition-all hover:opacity-90 shadow-lg"
-                style={{ background: LIME, color: PRIMARY }}
+                className="flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-base transition-opacity hover:opacity-90 shadow-lg"                style={{ background: LIME, color: PRIMARY }}
               >
                 Kostenlos anfragen{" "}
                 <ArrowUpRight size={18} style={{ color: PRIMARY }} />
@@ -878,11 +880,13 @@ export default function HomePage() {
         </div>
       </footer>
 
-      <ContactModal
-        open={contactOpen}
-        onClose={() => setContactOpen(false)}
-        initialService={contactService}
-      />
+      <Suspense fallback={null}>
+        <ContactModal
+          open={contactOpen}
+          onClose={() => setContactOpen(false)}
+          initialService={contactService}
+        />
+      </Suspense>
     </div>
   );
 }

@@ -6,9 +6,26 @@ import path from "path";
 const port = 5000;
 const basePath = process.env.BASE_PATH ?? "/";
 
+function deferCss() {
+  return {
+    name: "defer-css",
+    transformIndexHtml: {
+      order: "post" as const,
+      handler(html: string) {
+        return html.replace(
+          /<link rel="stylesheet"[^>]*href="([^"]+\.css)"[^>]*>/,
+          (_match, href) =>
+            `<link rel="preload" as="style" href="${href}" onload="this.onload=null;this.rel='stylesheet'">` +
+            `<noscript><link rel="stylesheet" href="${href}"></noscript>`
+        );
+      },
+    },
+  };
+}
+
 export default defineConfig({
   base: basePath,
-  plugins: [react(), tailwindcss()],
+  plugins: [react(), tailwindcss(), deferCss()],
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "src"),
