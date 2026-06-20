@@ -214,6 +214,8 @@ export default function HomePage() {
           <button
             className="md:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? "Menü schließen" : "Menü öffnen"}
+            aria-expanded={mobileOpen}
           >
             {mobileOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
@@ -490,12 +492,12 @@ export default function HomePage() {
                 className="p-6 rounded-xl shadow-md"
                 style={{ background: LIME }}
               >
-                <h4
+                <h3
                   className="font-extrabold text-lg mb-2 leading-tight"
                   style={{ color: PRIMARY }}
                 >
                   Ihr Zuhause in besten Händen
-                </h4>
+                </h3>
                 <p
                   className="text-sm font-medium mb-4"
                   style={{ color: "#2D5C30" }}
@@ -686,7 +688,7 @@ export default function HomePage() {
                 <h2 className="text-2xl md:text-3xl font-extrabold text-[#2D3748] mb-2">
                   Jetzt kostenloses Angebot anfordern
                 </h2>
-                <p className="text-gray-400 text-sm mb-8">
+                <p className="text-gray-500 text-sm mb-8">
                   Wir melden uns innerhalb von 24 Stunden bei Ihnen.
                 </p>
 
@@ -818,7 +820,7 @@ export default function HomePage() {
                 alt="AP Renovierung"
                 className="h-26 w-auto object-contain mb-4"
               />
-              <p className="text-white/60 text-sm leading-relaxed max-w-xs mb-6">
+              <p className="text-white/75 text-sm leading-relaxed max-w-xs mb-6">
                 AP Renovierung ist Ihr zuverlässiger Partner für professionelle
                 Renovierungen, Umzüge und Gartenpflege — alles aus einer Hand.
               </p>
@@ -829,9 +831,9 @@ export default function HomePage() {
 
             {/* Quick Links */}
             <div>
-              <h4 className="font-extrabold text-white mb-4 text-base">
+              <h3 className="font-extrabold text-white mb-4 text-base">
                 Leistungen
-              </h4>
+              </h3>
               <ul className="space-y-2 text-sm text-white/60">
                 {SERVICE_CARDS.map(({ title: l }) => (
                   <li key={l}>
@@ -848,9 +850,9 @@ export default function HomePage() {
 
             {/* Contact */}
             <div>
-              <h4 className="font-extrabold text-white mb-4 text-base">
+              <h3 className="font-extrabold text-white mb-4 text-base">
                 Kontakt
-              </h4>
+              </h3>
               <ul className="space-y-3 text-sm text-white/60">
                 <li className="text-white/80">
                   Inhaber: <span className="text-white">Pavle Tomovski</span>
@@ -882,7 +884,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between text-sm text-white/40">
+          <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between text-sm text-white/60">
             <p>
               © {new Date().getFullYear()} AP Renovierung — Pavle Tomovski.
               Alle Rechte vorbehalten.
@@ -962,6 +964,7 @@ function LeadForm() {
         value={service}
         onChange={(e) => setService(e.target.value)}
         className={`${inputClass} bg-white`}
+        aria-label="Leistung auswählen"
       >
         <option value="">Leistung auswählen</option>
         {SERVICE_CARDS.map(({ title: s }) => (
